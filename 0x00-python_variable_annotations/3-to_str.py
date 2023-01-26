@@ -2,8 +2,10 @@
 """" Write a type-annotated function 
 that takes a float n as argument 
 """
-def to_str(n: float) -> int:
+
+
+def to_str(n: float) -> str:
     """
-    returns the string representation of the float.
+    to_str function
     """
-    return int(n)
+    return str(n)
