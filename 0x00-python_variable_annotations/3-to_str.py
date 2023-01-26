@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""" Write a type-annotated function 
-that takes a float n as argument 
+"""" Write a type-annotated function
+that takes a float n as argument
 """
 
 
