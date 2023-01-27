@@ -46,5 +46,5 @@ class LFUCache(BaseCaching):
         if key in self.cache_data:
             key = self.cache_data[key]
             self._remove(key)
-            self._add(key, Value)
+            self._add(key)
             return key
