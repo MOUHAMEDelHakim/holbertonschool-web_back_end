@@ -1,22 +1,28 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
- Basic dictionary
+Basic dictionary
 """
-BaseCaching = __import__('BaseCaching').baseCaching
-class BasicCache (BaseCaching):
 
+
+BaseCaching = __import__('base_caching').BaseCaching
+
+
+class BasicCache(BaseCaching):
     """
-   basicCache
+    BasicCache
     """
-
-
     def put(self, key, item):
-
-     if(key, item is None ):
-        self.cache_data[key] = item
+        """
+        assign to the dictionary
+        """
+        if (key is not None and item is not None):
+            self.cache_data[key] = item
 
     def get(self, key):
-     if key is None or key not in self.cache_data.keys():
-        return None
-     else:
-        return self.cache_data[key]
+        """
+        return the value linked to key
+        """
+        if key is None or key not in self.cache_data.keys():
+            return None
+        else:
+            return self.cache_data[key]
