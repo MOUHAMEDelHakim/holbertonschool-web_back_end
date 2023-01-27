@@ -9,7 +9,7 @@ class LFUCache(BaseCaching):
     """ Class that inherits from BaseCaching and is a caching system """
     def __init__(self):
         super().__init__()
-        self.head, self.tail = ' ', '='
+        self.head, self.tail = '-', '='
         self.next, self.prev = {}, {}
         self.handle(self.head, self.tail)
 
@@ -24,7 +24,7 @@ class LFUCache(BaseCaching):
 
     def _add(self, key, item):
         """add element """
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS - 1:
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS + 1:
             print("DISCARD: {}".format(self.prev[self.tail]))
             self._remove(self.prev[self.tail])
         self.cache_data[key] = item
