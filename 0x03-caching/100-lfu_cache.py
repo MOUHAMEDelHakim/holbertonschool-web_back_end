@@ -9,7 +9,7 @@ class LFUCache(BaseCaching):
     """ Class that inherits from BaseCaching and is a caching system """
     def __init__(self):
         super().__init__()
-        self.head, self.tail = '-', '='
+        self.head, self.tail = ' ', '='
         self.next, self.prev = {}, {}
         self.handle(self.head, self.tail)
 
