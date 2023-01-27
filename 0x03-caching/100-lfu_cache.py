@@ -27,7 +27,7 @@ class LFUCache(BaseCaching):
         if len(self.cache_data) > BaseCaching.MAX_ITEMS - 1:
             print("DISCARD: {}".format(self.prev[self.tail]))
             self._remove(self.prev[self.tail])
-        self.cache_data[key] = key
+        self.cache_data[key] = item
         self.handle(self.prev[self.tail], key)
         self.handle(key, self.tail)
 
@@ -36,7 +36,7 @@ class LFUCache(BaseCaching):
         if key and item:
             if key in self.cache_data:
                 self._remove(key)
-            self._add(key, item)
+            self._add(key)
 
     def get(self, key):
         """ Return the value linked """
