@@ -24,11 +24,11 @@ class LFUCache(BaseCaching):
 
     def _add(self, key, item):
         """add element """
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS + 1:
-            print("DISCARD: {}".format(self.next[self.tail]))
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS - 1:
+            print("DISCARD: {}".format(self.prev[self.tail]))
             self._remove(self.prev[self.tail])
-        self.cache_data[key] = item
-        self.handle(self.next[self.tail], key)
+        self.cache_data[key] = key
+        self.handle(self.prev[self.tail], key)
         self.handle(key, self.tail)
 
     def put(self, key, item):
