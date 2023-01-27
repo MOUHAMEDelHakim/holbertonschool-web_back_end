@@ -2,6 +2,7 @@
 """
 LfU Caching
 """
+from multiprocessing import Value
 from base_caching import BaseCaching
 
 
@@ -44,14 +45,6 @@ class LFUCache(BaseCaching):
             return None
         if key in self.cache_data:
             value = self.cache_data[key]
-            self._remove(key)
-            self._add(key, value)
-            return value
-    def get(self, key, value):
-        if key is None or self.cache_data.get(key) is None:
-            return None
-        if key in self.cache_data:
-            value = self.cache_data[key]
-            self._remove(key)
+            self._remove(value)
             self._add(key)
-            return value
+            return key
