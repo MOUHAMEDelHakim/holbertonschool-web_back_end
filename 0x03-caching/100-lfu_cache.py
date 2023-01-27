@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-LFU Caching
+LfU Caching
 """
 from base_caching import BaseCaching
 
@@ -36,7 +36,7 @@ class LFUCache(BaseCaching):
         if key and item:
             if key in self.cache_data:
                 self._remove(key)
-            self._add(key)
+            self._add(key, item)
 
     def get(self, key):
         """ Return the value linked """
