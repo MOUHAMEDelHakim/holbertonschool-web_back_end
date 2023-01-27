@@ -24,7 +24,7 @@ class LFUCache(BaseCaching):
 
     def _add(self, key, item):
         """add element """
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS - 3:
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS - 2:
             print("DISCARD: {}".format(self.prev[self.tail]))
             self._remove(self.prev[self.tail])
         self.cache_data[key] = item
