@@ -13,3 +13,33 @@ AUTH = Auth()
 def root() -> str:
     ''' root route '''
     return jsonify({'message': 'Bienvenue'})
+
+@app.route('/users', methods=['POST'], strict_slashes=False)
+def users() -> str:
+    ''' sefl descriptive '''
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    try:
+        AUTH.register_user(email, password)
+        return jsonify({'email': email, 'message': 'user created'})
+    except ValueError:
+        return jsonify({"message": "email already registered"}), 400
+
+
+@app.route('/sessions', methods=['POST'], strict_slashes=False)
+def login() -> str:
+    '''self descriptive'''
+    email = request.form.get('email')
+    password = request.form.get('password')
+    valid_login = AUTH.valid_login(email, password)
+
+    if valid_login:
+        session_id = AUTH.create_session(email)
+        message = {"email": email, "message": "logged in"}
+        response = jsonify(message)
+        response.set_cookie('session_id', session_id)
+
+        return response
+    else:
+        abort(401)
