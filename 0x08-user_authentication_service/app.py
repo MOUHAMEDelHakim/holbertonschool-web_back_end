@@ -1,6 +1,5 @@
-
-
 #!/usr/bin/env python3
+
 """ API endpoints
 """
 from flask import Flask, jsonify, request, abort
