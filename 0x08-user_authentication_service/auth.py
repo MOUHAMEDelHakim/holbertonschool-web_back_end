@@ -14,3 +14,7 @@ def _hash_password(password: str) -> str:
     '''self descriptive'''
     salted_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
     return salted_password
+
+def _generate_uuid() -> str:
+    ''' self descriptive '''
+    return str(uuid4())
