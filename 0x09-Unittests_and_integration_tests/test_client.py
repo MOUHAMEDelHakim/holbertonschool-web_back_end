@@ -35,7 +35,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
     @patch("client.get_json")
     def test_public_repos(self, get_patch):
-        """"""
+        """patch"""
         get_patch.return_value = [{"name": "google"},
                                   {"name": "abc"}]
         with patch.object(GithubOrgClient, "_public_repos_url",
@@ -52,7 +52,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ({"license": {"key": "other_license"}}, "my_license", False)
     ])
     def test_has_license(self, repo, license, expected):
-        """"""
+        """def test license"""
         github_client = GithubOrgClient("yahoo")
         response = (github_client.has_license(repo, license))
         self.assertEqual(response, expected)
