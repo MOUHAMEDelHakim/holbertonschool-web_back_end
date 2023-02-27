@@ -1,5 +1,3 @@
-
-
 #!/usr/bin/env python3
 """Test utils"""
 import unittest
@@ -23,13 +21,19 @@ class TestAccessNestedMap(unittest.TestCase):
         """method to test that access_nested_map method
         returns what it is supposed to."""
         self.assertEqual(access_nested_map(nested_map, path), expected)
+
+    @parameterized.expand([
+        ({}, ["a"], KeyError),
+        ({"a": 1}, ["a", "b"], KeyError)
+    ])
     def test_access_nested_map_exception(self, nested_map:
                                          Mapping, path: Sequence,
                                          expected):
-
         """test that a KeyError is raised"""
         with self.assertRaises(KeyError) as raises:
             access_nested_map(nested_map, path)
+
+
 class TestGetJson(unittest.TestCase):
     """test get_json"""
     @parameterized.expand([
@@ -46,7 +50,7 @@ class TestGetJson(unittest.TestCase):
             request = get_json(url)
             self.assertEqual(request, payload)
             response.json.assert_called_once()
-    
+
 
 class TestMemoize(unittest.TestCase):
     """a test class that inherits from unittest.TestCase"""
