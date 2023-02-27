@@ -23,8 +23,3 @@ class TestAccessNestedMap(unittest.TestCase):
         """method to test that access_nested_map method
         returns what it is supposed to."""
         self.assertEqual(access_nested_map(nested_map, path), expected)
-
-    @parameterized.expand([
-        ({}, ["a"], KeyError),
-        ({"a": 1}, ["a", "b"], KeyError)
-    ])
