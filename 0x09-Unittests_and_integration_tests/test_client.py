@@ -56,9 +56,8 @@ class TestGithubOrgClient(unittest.TestCase):
         github_client = GithubOrgClient("yahoo")
         response = (github_client.has_license(repo, license))
         self.assertEqual(response, expected)
+        
 
-    @patch (license="apache-2.0")
-    
 
 if __name__ == '__main__':
     unittest.main()
