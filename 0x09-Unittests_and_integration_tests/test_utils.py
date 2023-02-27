@@ -47,3 +47,30 @@ class TestGetJson(unittest.TestCase):
             self.assertEqual(request, payload)
             response.json.assert_called_once()
     
+
+class TestMemoize(unittest.TestCase):
+    """a test class that inherits from unittest.TestCase"""
+
+    def test_memoize(self):
+        """ Testing memorize"""
+        class TestClass:
+            """test class"""
+
+            def a_method(self):
+                """method that returns 42"""
+                return 42
+
+            @memoize
+            def a_property(self):
+                """ Returns memoized property"""
+                return self.a_method()
+
+        with patch.object(TestClass, 'a_method', return_value=42) as patched:
+            test_class = TestClass()
+            returned = test_class.a_property
+            self.assertEqual(returned, 42)
+            patched.assert_called_once()
+
+
+if __name__ == '__main__':
+    unittest.main()
