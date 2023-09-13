@@ -3,7 +3,7 @@
 Redis basic
 """
 from functools import wraps
-from functools import redis
+import redis
 from typing import Optional, Union, Callable
 import uuid
 
